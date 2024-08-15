@@ -15,7 +15,7 @@ export const OrderAssociations = () => {
 
   Supplier.hasMany(Order, {
     foreignKey: 'supplierId',
-    as: 'order',
+    as: 'orders',
   })
 
   Order.belongsTo(Supplier, {

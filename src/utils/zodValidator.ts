@@ -13,12 +13,14 @@ const createSupplierSchema = z.object({
 
 const createOrderSchema = z.object({
   pname: z.string().min(3).max(50),
-  amount: z.coerce.number().min(0),
+  amount: z.coerce.number().min(1),
+  order_number: z.coerce.number().min(0),
+  supplierId: z.coerce.number().min(1),
 })
 
-const patchProductSchema = createProductSchema.optional()
-const patchSupplierSchema = createSupplierSchema.optional()
-const patchOrderSchema = createOrderSchema.optional()
+const patchProductSchema = createProductSchema.partial()
+const patchSupplierSchema = createSupplierSchema.partial()
+const patchOrderSchema = createOrderSchema.partial()
 
 const handleSchema: Record<string, z.Schema> = {
   create_product: createProductSchema,

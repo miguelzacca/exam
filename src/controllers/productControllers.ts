@@ -37,7 +37,7 @@ export const getProducts: Controller = async (req, res) => {
     const products = await Product.findAll({
       where,
       attributes: {
-        exclude: ['id'],
+        exclude: ['id', 'orderId'],
       },
     })
 
